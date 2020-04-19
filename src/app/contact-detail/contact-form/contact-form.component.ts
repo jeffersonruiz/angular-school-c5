@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Contact } from 'src/app/contact.model';
+import { Contact, PhoneType } from 'src/app/contact.model';
 import { ContactsService } from 'src/app/contacts.service';
 
 
@@ -10,16 +10,21 @@ import { ContactsService } from 'src/app/contacts.service';
 })
 export class ContactFormComponent implements OnInit {
 
-  public model:Contact = new Contact(0, '');
-  
-  constructor(private contactsService:ContactsService) { }
+  public model: Contact = new Contact(0, '', null, []);
+  public readonly phoneTypes: string[] = Object.values(PhoneType);
+
+  constructor(private contactsService: ContactsService) { }
 
   ngOnInit() {
   }
 
-  addContact(){
+  addContact() {
     this.contactsService.addContact(this.model);
-    this.model = new Contact(0,'');
+    this.model = new Contact(0, '', null, []);
+  }
+
+  addNewPhoneToModel() {
+    this.model.phones.push({type: null, number: null});
   }
 
 }

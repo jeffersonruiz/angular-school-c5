@@ -3,6 +3,17 @@
         <label for="name">Name:</label>
         <input type="text" id="name" [(ngModel)]="model.name" name="name" required>
     </div>
+    <div class="form-group">
+        <p>Phone:</p>
+        <div class="form-item" *ngFor="let phone of model.phones; index as i">
+            <label for="phone-type">Phone</label>
+            <select id="phone-type" [(ngModel)]="model.phones[i].type" name="phone-{{i}}-type">
+                <option [value]="type" *ngFor="let type of phoneTypes">{{type}}</option>
+            </select> 
+            <input type="tel" id="phone-number" [(ngModel)]="model.phones[i].number" name="phone-{{i}}-number">
+        </div>
+        <p class="form-action" (click)="addNewPhoneToModel()">Add phone +</p>
+    </div>
     <div class="form-item">
         <label for="email">Email:</label>
         <input type="text" id="email" [(ngModel)]="model.email" name="email">
