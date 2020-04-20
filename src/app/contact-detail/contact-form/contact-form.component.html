@@ -1,4 +1,8 @@
 <form (ngSubmit)="addContact()">
+    <div class="form-item-image">
+        <img [src]="model.picture">
+        <input type="file" accept=".png,.jpg,.jpeg" (change)="addImage($event)">
+    </div>
     <div class="form-item">
         <label for="name">Name:</label>
         <input type="text" id="name" [(ngModel)]="model.name" name="name" required>
@@ -25,4 +29,4 @@
     <button class="form-button" type="submit">Add contact</button>
 </form>
 
-<pre>{{model | json}}</pre>
+<!-- <pre>{{model | json}}</pre> -->
