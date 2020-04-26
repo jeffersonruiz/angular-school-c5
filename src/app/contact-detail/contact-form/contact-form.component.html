@@ -14,7 +14,10 @@
             </p>
             <p *ngIf="nameControl.errors.minlength" class="error-message">
                 A name needs at least 2 characters!!
-            </p>            
+            </p>  
+            <p *ngIf="nameControl.errors.startsWithCapital" class="error-message">
+                The name should start with capital letter!!
+            </p>           
         </ng-container>
 
     </div>

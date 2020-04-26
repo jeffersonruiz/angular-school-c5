@@ -13,16 +13,15 @@ export function startWithCapitalValidator(): ValidatorFn {
 }
 
 @Directive({
-    // tslint:disable-next-line: directive-selector
     selector: '[startsWithCapital]',
     providers: [{provide: NG_VALIDATORS,
-                useExisting: startWithCapitalValidatorDirective,
+                useExisting: StartWithCapitalValidatorDirective,
                 multi: true}]
 })
 
-export class startWithCapitalValidatorDirective implements Validator {
+export class StartWithCapitalValidatorDirective implements Validator {
     @Input('startsWithCapital') isActive: boolean;
-    constructor(parameters) {}
+    constructor() {}
     validate(control: AbstractControl): (ValidationErrors | null) {
         return !this.isActive ? null : startWithCapitalValidator()(control);
     }
