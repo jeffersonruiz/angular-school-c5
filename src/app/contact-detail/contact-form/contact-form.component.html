@@ -1,4 +1,4 @@
-<form (ngSubmit)="addContact()">
+<form (ngSubmit)="addContact()" #contactForm="ngForm">
     <div class="form-item-image">
         <img [src]="model.picture">
         <input type="file" accept=".png,.jpg,.jpeg" (change)=addImage($event)>
@@ -36,5 +36,5 @@
         <label for="address">Adress:</label>
         <input type="text" id="address" [(ngModel)]="model.direction" name="adress" >
     </div>
-    <button class="form-button" type="submit">Add contact</button>
+    <button class="form-button" type="submit" [disabled]="!contactForm.valid">Add contact</button>
 </form>
