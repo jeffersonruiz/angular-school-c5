@@ -7,7 +7,7 @@
     <div class="form-item">
         <label for="name">Name:</label>
         <input type="text" id="name" [(ngModel)]="model.name" name="name" 
-            required minlength="2" #nameControl="ngModel">
+            required minlength="2" [startsWithCapital]="true" #nameControl="ngModel">
         <ng-container *ngIf="!nameControl.valid && nameControl.touched">
             <p *ngIf="nameControl.errors.required" class="error-message">
                 This field is required!!
