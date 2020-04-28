@@ -9,6 +9,17 @@
     <div class="form-item">
         <label for="name">Name:</label>
         <input type="text" id="name" formControlName="name">
+        <ng-container *ngIf="!name.valid && name.touched">
+            <p *ngIf="name.errors.required" class="error-message">
+                this field is requiered!!
+            </p>
+            <p *ngIf="name.errors.minlength" class="error-message">
+                A name needs at least 2 characters!!
+            </p>
+            <p *ngIf="name.errors.startsWithCapital && !name.errors.minlength" class="error-message">
+                The name should start with capital letter!!
+            </p>
+        </ng-container>
     </div>
 
     <!-- phones field -->
@@ -34,9 +45,11 @@
     </div>
 
     <!-- submit button -->
-    <button class="form-button" type="submit">
+    <button class="form-button" type="submit" [disabled]="contactForm.invalid">
         Add contact
     </button>
     
 </form>
 <pre>{{contactForm.value | json }}</pre>
+
+<p>{{ contactForm.status }}</p>
