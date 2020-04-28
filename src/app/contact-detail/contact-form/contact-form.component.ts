@@ -10,31 +10,35 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./contact-form.component.scss']
 })
 export class ContactFormComponent implements OnInit {
-  public readonly phoneTypes:string[] = Object.values(PhoneType);
-  public contactForm:FormGroup = new FormGroup({
+  public readonly phoneTypes: string[] = Object.values(PhoneType);
+  public contactForm: FormGroup = new FormGroup({
     name: new FormControl(''),
+    phone: new FormGroup({
+      type: new FormControl(''),
+      number: new FormControl('')
+    }),
     email: new FormControl(''),
     address: new FormControl('')
   });
 
-  constructor(private contactsService:ContactsService) { }
+  constructor(private contactsService: ContactsService) { }
 
   ngOnInit() {
   }
 
-  addContact(){
+  addContact() {
   }
 
-  addNewPhoneToModel(){
+  addNewPhoneToModel() {
   }
 
-  addImage(event){
+  addImage(event) {
     const file = event.target.files[0];
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (evt) => {
-      //save reader.result in form picture field
-    }
+      // save reader.result in form picture field
+    };
   }
 
 }
