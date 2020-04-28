@@ -1,7 +1,7 @@
 <form [formGroup]="contactForm">    
     <!-- image field -->
     <div class="form-item-image">
-        <img [src]="">
+        <img [src]="contactForm.value.picture">
         <input type="file" accept=".png,.jpg,.jpeg" (change)=addImage($event)>
     </div>
 
