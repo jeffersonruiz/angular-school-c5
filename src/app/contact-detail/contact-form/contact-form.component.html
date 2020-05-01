@@ -1,4 +1,4 @@
-<form [formGroup]="contactForm">    
+<form [formGroup]="contactForm" (ngSubmit)="addContact()">    
     <!-- image field -->
     <div class="form-item-image">
         <img [src]="contactForm.value.picture">
@@ -44,7 +44,7 @@
     <!-- address field -->
     <div class="form-item">
         <label for="address">Adress:</label>
-        <input type="text" id="address" formControlName="address">
+        <input type="text" id="address" formControlName="direction">
     </div>
 
     <!-- submit button -->
